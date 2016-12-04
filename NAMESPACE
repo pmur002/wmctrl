@@ -1,0 +1,15 @@
+
+importFrom("utils", "read.csv")
+
+export("showDesktop",
+       "windowList",
+       "getWindowID",
+       "removeWindowState",
+       "addWindowState",
+       "toggleWindowState",
+       "positionWindow",
+       "locateWindow",
+       "sizeWindow",
+       "focusWindow",
+       "openWindow",
+       "closeWindow")
