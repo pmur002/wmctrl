@@ -5,7 +5,7 @@ openWindow <- function(program, args="", pid=FALSE, timeout=10) {
     w1 <- windowList(pid=pid)
 
     ## Run the program 
-    system(paste(program, args))
+    system(paste(program, args), wait=FALSE)
 
     if (pid) {
         ## Get process id of program
