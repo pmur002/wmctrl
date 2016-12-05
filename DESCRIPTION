@@ -1,7 +1,7 @@
 Package: wmctrl
 Type: Package
 Title: R interface to wmctrl command
-Version: 0.1
+Version: 0.1-1
 Date: 2016-11-25
 Author: Paul Murrell
 Maintainer: Paul Murrell <paul@stat.auckland.ac.nz>
@@ -9,5 +9,5 @@ Description: Provides R functions to control the windows and mouse on a
   Linux desktop (with an X Window manager that is compatible with the 
   EWMH/NetWM specification). The functions all work by making system calls 
   to the wmctrl command.
-License: GPL-3
+License: file LICENSE
 SystemRequirements: wmctrl, pidof
