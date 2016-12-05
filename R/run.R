@@ -1,8 +1,8 @@
 
 ## Run a program that opens a window and return the windowID of that window
 ## If timeout elapses without success, fail
-openWindow <- function(program, args="", pid=TRUE, timeout=10) {
-    w1 <- windowList(pid=TRUE)
+openWindow <- function(program, args="", pid=FALSE, timeout=10) {
+    w1 <- windowList(pid=pid)
 
     ## Run the program 
     system(paste(program, args))
@@ -20,7 +20,7 @@ openWindow <- function(program, args="", pid=TRUE, timeout=10) {
     found <- FALSE
     while (!found && (proc.time() - time)[3] < timeout) {
         ## Check the window list again
-        w2 <- windowList(pid=TRUE)
+        w2 <- windowList(pid=pid)
         if (nrow(w2) > nrow(w1)) {
             wnew <- ! w2$windowID %in% w1$windowID
             if (pid) {
