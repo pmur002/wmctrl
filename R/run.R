@@ -28,8 +28,10 @@ openWindow <- function(program, args="", pid=FALSE, timeout=10) {
             }
             windowID <- w2$windowID[wnew]
             if (length(windowID) > 0) {
-                if (length(windowID) > 1)
-                    stop("More than one window matched")
+                if (length(windowID) > 1) {
+                    warning("More than one window matched")
+                    windowID <- windowID[1]
+                }
                 found <- TRUE
             }
         }
