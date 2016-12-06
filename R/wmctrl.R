@@ -85,15 +85,22 @@ windowList <- function(pid=FALSE, geometry=FALSE, class=FALSE) {
     }
     colnames <- c(colnames, c("machine", "windowName"))
     listing <- getWindows(paste0("wmctrl ", args))
-    values <- strsplit(listing, " +")
-    csv <- sapply(values,
-                  function(x) {
-                      paste0(paste(x[1:(ncol - 1)], collapse=","),
-                             ',"',
-                             paste(x[ncol:length(x)], collapse=" "),
-                             '"')
-                  })
-    read.csv(textConnection(csv), col.names=colnames)
+    if (length(listing)) {
+        values <- strsplit(listing, " +")
+        csv <- sapply(values,
+                      function(x) {
+                          paste0(paste(x[1:(ncol - 1)], collapse=","),
+                                 ',"',
+                                 paste(x[ncol:length(x)], collapse=" "),
+                                 '"')
+                      })
+        read.csv(textConnection(csv), col.names=colnames)
+    } else {
+        ## Zero windows
+        df <- as.data.frame(matrix(nrow=0, ncol=length(colnames)))
+        names(df) <- colnames
+        df
+    }
 }
 
 getWindowID <- function(name, pid=NULL, class=NULL, ...) {
