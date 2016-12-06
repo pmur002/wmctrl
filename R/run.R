@@ -38,7 +38,7 @@ openWindow <- function(program, args="", pid=FALSE, timeout=3) {
         Sys.sleep(.1)
     }
 
-    if (!found) stop("Failed to detect program window")
+    if (!found) stop(paste0("Failed to detect", program, "window"))
 
     windowID
 }
