@@ -95,7 +95,7 @@ windowList <- function(pid=FALSE, geometry=FALSE, class=FALSE) {
                                  '"')
                       })
         textcon <- textConnection(csv)
-        df <- read.csv(textcon, col.names=colnames)
+        df <- read.csv(textcon, col.names=colnames, header=FALSE)
         close(textcon)
     } else {
         ## Zero windows
