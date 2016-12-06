@@ -94,7 +94,9 @@ windowList <- function(pid=FALSE, geometry=FALSE, class=FALSE) {
                                  paste(x[ncol:length(x)], collapse=" "),
                                  '"')
                       })
-        read.csv(textConnection(csv), col.names=colnames)
+        tc <- textConnection(csv)
+        read.csv(tc, col.names=colnames)
+        close(tc)
     } else {
         ## Zero windows
         df <- as.data.frame(matrix(nrow=0, ncol=length(colnames)))
