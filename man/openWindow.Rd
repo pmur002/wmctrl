@@ -7,7 +7,7 @@
   Open a program window and return the windowID.
 }
 \usage{
-openWindow(program, args = "", pid = FALSE, timeout = 10)
+openWindow(program, args = "", pid = FALSE, timeout = 3)
 }
 \arguments{
   \item{program}{

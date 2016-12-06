@@ -1,7 +1,7 @@
 
 ## Run a program that opens a window and return the windowID of that window
 ## If timeout elapses without success, fail
-openWindow <- function(program, args="", pid=FALSE, timeout=10) {
+openWindow <- function(program, args="", pid=FALSE, timeout=3) {
     w1 <- windowList(pid=pid)
 
     ## Run the program 
@@ -35,6 +35,7 @@ openWindow <- function(program, args="", pid=FALSE, timeout=10) {
                 found <- TRUE
             }
         }
+        Sys.sleep(.1)
     }
 
     if (!found) stop("Failed to detect program window")
