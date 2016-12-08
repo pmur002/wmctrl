@@ -57,9 +57,15 @@ windowList <- function(pid=FALSE, geometry=FALSE, class=FALSE) {
     getWindows <- function(cmd) {
         wl <- system(cmd, intern=TRUE)
         if (!is.null(attr(wl, "status"))) {
-            # Try again
-            while (!is.null(attr(wl, "status"))) {
+            # Try again (for up to 3 seconds)
+            starttime <- proc.time()[3]
+            while (!is.null(attr(wl, "status")) &&
+                   (proc.time()[3] - starttime) < 3) {
                 wl <- system(cmd, intern=TRUE)
+                Sys.sleep(.1)
+            }
+            if (!is.null(attr(wl, "status"))) {
+                stop("Failed to get window list")
             }
         }
         wl
